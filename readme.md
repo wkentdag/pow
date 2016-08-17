@@ -1,4 +1,6 @@
 # pow
+[![tests](https://travis-ci.org/wkentdag/pow.svg?branch=master)](https://travis-ci.org/wkentdag/pow)
+[![dependencies](https://david-dm.org/wkentdag/pow.svg)](https://david-dm.org/wkentdag/pow)
 
 passionweiss.com redesign
 
