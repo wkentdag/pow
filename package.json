@@ -14,7 +14,7 @@
     "image-webpack-loader": "2.0.0",
     "lost": "^7.0.4",
     "markdown-it": "7.0.1",
-    "postcss-cssnext": "2.7.0",
+    "postcss-cssnext": "2.8.0",
     "postcss-font-magician": "^1.4.0",
     "postcss-import": "8.x",
     "reshape-content": "^0.2.0",
