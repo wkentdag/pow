@@ -1,14 +1,14 @@
+require('dotenv').config()
 const path = require('path')
 const HardSourcePlugin = require('hard-source-webpack-plugin')
 const standard = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-latest')
-const pageId = require('spike-page-id')
+const Wordpress = require('spike-wordpress')
 const lost = require('lost')
 const fontMagician = require('postcss-font-magician')
 
-const fs = require('fs')
-const data = JSON.parse(fs.readFileSync('data.json', 'utf8'))
+const locals = {}
 
 module.exports = {
   devtool: 'source-map',
@@ -20,7 +20,7 @@ module.exports = {
   reshape: (ctx) => {
     return standard({
       webpack: ctx,
-      locals: { pageId: pageId(ctx), foo: 'bar', data }
+      locals: locals
     })
   },
   postcss: (ctx) => {
@@ -33,6 +33,18 @@ module.exports = {
   },
   babel: { presets: [jsStandards] },
   plugins: [
+    new Wordpress({
+      name: process.env.wordpress_url,
+      addDataTo: locals,
+      postTypes: [{
+        category: 'review',
+        number: 5,
+        template: {
+          path: './views/_review.sgr',
+          output: (item) => `posts/${item.slug}.html`
+        }
+      }]
+    }),
     new HardSourcePlugin({
       environmentPaths: { root: __dirname },
       recordsPath: path.join(__dirname, '_cache/records.json'),
