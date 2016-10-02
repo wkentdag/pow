@@ -1,46 +1,42 @@
-const htmlStandards = require('spike-html-standards')
-const Markdown = require('markdown-it')
-const smartypants = require('retext-smartypants')
-const sugarss = require('sugarss')
-const postcssImport = require('postcss-import')
-const cssnext = require('postcss-cssnext')
+const path = require('path')
+const HardSourcePlugin = require('hard-source-webpack-plugin')
+const standard = require('reshape-standard')
+const cssStandards = require('spike-css-standards')
+const jsStandards = require('babel-preset-latest')
+const pageId = require('spike-page-id')
 const lost = require('lost')
 const fontMagician = require('postcss-font-magician')
-const rucksack = require('rucksack-css')
-const es2015 = require('babel-preset-es2015')
-const stage2 = require('babel-preset-stage-2')
+
 const fs = require('fs')
 const data = JSON.parse(fs.readFileSync('data.json', 'utf8'))
-
-const md = new Markdown(/* markdown-it config */)
 
 module.exports = {
   devtool: 'source-map',
   matchers: {
-    html: '**/*.sml',
-    css: '**/*.sss'
+    html: '*(**/)*.sgr',
+    css: '*(**/)*.sss'
   },
-  ignore: ['**/layout.sml', '**/_*', '**/.*'],
+  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md'],
   reshape: (ctx) => {
-    return htmlStandards({
-      sugarml: true,
+    return standard({
       webpack: ctx,
-      locals: { data },
-      content: { md: md.renderInline.bind(md) },
-      retext: smartypants
+      locals: { pageId: pageId(ctx), foo: 'bar', data }
     })
   },
   postcss: (ctx) => {
-    return {
-      parser: sugarss,
-      plugins: [
-        postcssImport({ addDependencyTo: ctx }),
-        cssnext(),
-        rucksack(),
-        lost(),
-        fontMagician()
-      ]
-    }
+    let css = cssStandards({ webpack: ctx })
+    let otherPlugins = [lost, fontMagician]
+    otherPlugins.forEach(plugin =>
+      css.plugins.push(plugin())
+    )
+    return css
   },
-  babel: { presets: [es2015, stage2] }
+  babel: { presets: [jsStandards] },
+  plugins: [
+    new HardSourcePlugin({
+      environmentPaths: { root: __dirname },
+      recordsPath: path.join(__dirname, '_cache/records.json'),
+      cacheDirectory: path.join(__dirname, '_cache/hard_source_cache')
+    })
+  ]
 }

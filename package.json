@@ -1,32 +1,21 @@
 {
-  "name": "foo",
-  "description": "foobar",
+  "name": "pow",
+  "description": "passionweiss.com",
   "version": "0.0.1",
   "author": "wkentdag",
   "ava": {
     "verbose": "true"
   },
-  "bugs": "https://github.com/wkentdag/foo/issues",
+  "bugs": "https://github.com/wkentdag/pow/issues",
   "dependencies": {
-    "babel-preset-es2015": "6.x",
-    "babel-preset-stage-2": "6.x",
-    "cssnano": "3.x",
+    "babel-preset-latest": "6.14.0",
+    "hard-source-webpack-plugin": "0.0.38",
     "image-webpack-loader": "2.0.0",
     "lost": "^7.0.4",
-    "markdown-it": "7.0.1",
-    "postcss-cssnext": "2.7.0",
     "postcss-font-magician": "^1.4.0",
-    "postcss-import": "8.x",
-    "reshape-content": "^0.1.1",
-    "reshape-expressions": "^0.1.0",
-    "reshape-include": "^0.1.0",
-    "reshape-layouts": "^0.2.1",
-    "reshape-retext": "^0.1.1",
-    "retext-smartypants": "^2.0.0",
-    "rucksack-css": "^0.8.0",
-    "spike-html-standards": "^0.2.1",
-    "sugarml": "^0.2.0",
-    "sugarss": "^0.1.0",
+    "reshape-standard": "^0.4.0",
+    "spike-css-standards": "^0.1.1",
+    "spike-page-id": "^0.1.0",
     "webpack": "1.13.x"
   },
   "devDependencies": {
@@ -37,10 +26,10 @@
     "spike-core": "^0.11.0",
     "standard": "^7.1.2"
   },
-  "homepage": "https://github.com/wkentdag/foo",
+  "homepage": "https://github.com/wkentdag/pow",
   "main": "app.js",
   "private": "true",
-  "repository": "https://github.com/wkentdag/foo",
+  "repository": "https://github.com/wkentdag/pow",
   "scripts": {
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",

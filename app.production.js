@@ -1,17 +1,9 @@
-const htmlStandards = require('spike-html-standards')
-const Markdown = require('markdown-it')
-const smartypants = require('retext-smartypants')
-const sugarss = require('sugarss')
-const postcssImport = require('postcss-import')
-const cssnext = require('postcss-cssnext')
-const rucksack = require('rucksack-css')
-const cssnano = require('cssnano')
-const webpack = require('webpack')
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
-const DedupePlugin = webpack.optimize.DedupePlugin
-const OccurrenceOrderPlugin = webpack.optimize.OccurrenceOrderPlugin
-
-const md = new Markdown(/* markdown-it config */)
+const standard = require('reshape-standard')
+const cssStandards = require('spike-css-standards')
+const pageId = require('spike-page-id')
+const {UglifyJsPlugin, DedupePlugin, OccurrenceOrderPlugin} = require('webpack').optimize
+const lost = require('lost')
+const fontMagician = require('postcss-font-magician')
 
 module.exports = {
   // disable source maps
@@ -28,24 +20,23 @@ module.exports = {
   },
   // TODO add html minification plugin
   reshape: (ctx) => {
-    return htmlStandards({
-      sugarml: true,
+    return standard({
       webpack: ctx,
-      locals: { foo: 'bar' },
-      content: { md: md.renderInline.bind(md) },
-      retext: smartypants
+      locals: { pageId: pageId(ctx), foo: 'bar' },
+      minify: true
     })
   },
   // adds css minification plugin
   postcss: (ctx) => {
-    return {
-      parser: sugarss,
-      plugins: [
-        postcssImport({ addDependencyTo: ctx }),
-        cssnext({ warnForDuplicates: false }),
-        rucksack(),
-        cssnano()
-      ]
-    }
+    let css = cssStandards({
+      webpack: ctx,
+      minify: true,
+      warnForDuplicates: false  //  cssnano includes autoprefixer
+    })
+    let otherPlugins = [lost, fontMagician]
+    otherPlugins.forEach(plugin =>
+      css.plugins.push(plugin())
+    )
+    return css
   }
 }

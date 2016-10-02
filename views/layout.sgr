@@ -16,11 +16,11 @@ html
       link(rel='stylesheet' href='css/index.css')
 
   body
-    include(src='_header.sml')
+    include(src='_header.sgr')
     #content
       block(name='content')
 
-    include(src='_navbar.sml')
+    include(src='_navbar.sgr')
 
     block(name='javascript')
       script(src='js/main.js')
