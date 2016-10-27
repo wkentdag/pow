@@ -10,7 +10,7 @@
   "dependencies": {
     "babel-preset-latest": "6.14.0",
     "hard-source-webpack-plugin": "0.1.4",
-    "image-webpack-loader": "2.0.0",
+    "image-webpack-loader": "3.0.0",
     "lost": "^7.0.4",
     "postcss-font-magician": "^1.4.0",
     "reshape-standard": "^0.4.0",
