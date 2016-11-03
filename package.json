@@ -9,7 +9,7 @@
   "bugs": "https://github.com/wkentdag/pow/issues",
   "dependencies": {
     "babel-preset-latest": "6.14.0",
-    "hard-source-webpack-plugin": "0.1.4",
+    "hard-source-webpack-plugin": "0.2.1",
     "image-webpack-loader": "3.0.0",
     "lost": "^7.0.4",
     "postcss-font-magician": "^1.4.0",
