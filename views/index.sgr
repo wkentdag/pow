@@ -1,13 +1,14 @@
 extends(src='layout.sgr')
   block(name='content')
     section
-      #hero(style=bg)
-        a(href='#' )
-          h1  {{wordpress.review[0].title}}
+      #hero
+        a(href={{ wordpress.interviews[0]._url }} )
+          h1 {{ wordpress.interviews[0].title }}
           .hero-overlay
+          img(src={{ wordpress.interviews[0].featured_image }})
 
       .recent-stories
-        each(loop="post, i in wordpress.review")
+        each(loop="post, i in wordpress.interviews")
           if(condition="i > 0")
             .story
               a(href='#')

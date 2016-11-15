@@ -32,9 +32,12 @@
   "private": "true",
   "repository": "https://github.com/wkentdag/pow",
   "scripts": {
+    "compile": "spike compile",
+    "clean": "spike clean",
     "lint": "standard --verbose | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
+    "start": "spike watch",
     "test": "NODE_ENV=test ava"
   }
 }

@@ -26,9 +26,7 @@ module.exports = {
   postcss: (ctx) => {
     let css = cssStandards({ webpack: ctx })
     let otherPlugins = [lost, fontMagician]
-    otherPlugins.forEach(plugin =>
-      css.plugins.push(plugin())
-    )
+    otherPlugins.forEach(plugin => css.plugins.push(plugin()))
     return css
   },
   babel: { presets: [jsStandards] },
@@ -37,10 +35,15 @@ module.exports = {
       name: process.env.wordpress_url,
       addDataTo: locals,
       postTypes: [{
-        category: 'review',
-        number: 5,
+        category: 'interviews',
+        number: 10,
+        transform: (post) => {
+          post._url = `/posts/${post.slug}`
+          console.log(post._url)
+          return post
+        },
         template: {
-          path: './views/_review.sgr',
+          path: './views/_interview.sgr',
           output: (item) => `posts/${item.slug}.html`
         }
       }]

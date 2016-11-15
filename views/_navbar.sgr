@@ -1,7 +1,19 @@
 nav
   img(src='/img/logo.png' alt='logo')
   ul.nav
-    li Interviews
-    li Reviews
-    li foo
-    li Bar
+    li: a(href='/archive') Archive
+    li: a(href='/interviews') Interviews
+    li: a(href='/reviews') Reviews
+    li: a(href='/mixes') Mixes
+    li: a(href='/staff') Staff
+
+  h2 links
+
+  ul
+    li: a(href='#') Twitter
+    li: a(href='#') Facebook
+    li: a(href='#') Soundcloud
+    li: a(href='#') Youtube
+    li: a(href='#') Calendar
+    li: a(href='#') Podcast
+    li: a(href='#') Forum
