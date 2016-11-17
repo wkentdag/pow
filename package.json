@@ -14,7 +14,7 @@
     "image-webpack-loader": "3.0.0",
     "lost": "^7.0.4",
     "postcss-font-magician": "^1.4.0",
-    "reshape-standard": "^0.4.0",
+    "reshape-standard": "^0.4.1",
     "spike-css-standards": "^0.1.1",
     "spike-wordpress": "^0.1.0",
     "webpack": "1.13.x"
