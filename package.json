@@ -16,7 +16,7 @@
     "postcss-font-magician": "^1.4.0",
     "reshape-standard": "^0.4.0",
     "spike-css-standards": "^0.1.1",
-    "spike-wordpress": "^0.1.0",
+    "spike-wordpress": "^0.2.3",
     "webpack": "1.13.x"
   },
   "devDependencies": {
