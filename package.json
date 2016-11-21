@@ -14,17 +14,17 @@
     "image-webpack-loader": "3.0.0",
     "lost": "^7.0.4",
     "postcss-font-magician": "^1.4.0",
-    "reshape-standard": "^0.4.0",
-    "spike-css-standards": "^0.1.1",
-    "spike-wordpress": "^0.1.0",
+    "reshape-standard": "^0.4.2",
+    "spike-css-standards": "^0.1.2",
+    "spike-wordpress": "^0.2.3",
     "webpack": "1.13.x"
   },
   "devDependencies": {
-    "ava": "^0.16.0",
+    "ava": "^0.17.0",
     "rimraf": "^2.5.4",
     "snazzy": "^5.0.0",
-    "spike": "^0.12.1",
-    "spike-core": "^0.12.1",
+    "spike": "^0.12.2",
+    "spike-core": "^0.12.2",
     "standard": "^8.0.0"
   },
   "homepage": "https://github.com/wkentdag/pow",

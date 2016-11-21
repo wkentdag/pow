@@ -2,17 +2,20 @@ extends(src='layout.sgr')
   block(name='content')
     section
       #hero
-        a(href={{ wordpress.interviews[0]._url }} )
-          h1 {{ wordpress.interviews[0].title }}
+        a(href="{{ wordpress.recent_posts[0]._url }}")
+          h1 {{ wordpress.recent_posts[0].title }}
           .hero-overlay
-          img(src={{ wordpress.interviews[0].featured_image }})
+          img(src="{{ wordpress.recent_posts[0].featured_image }}")
 
       .recent-stories
-        each(loop="post, i in wordpress.interviews")
+        each(loop="post, i of wordpress.recent_posts")
           if(condition="i > 0")
             .story
-              a(href='#')
+              a(href='{{ post._url }}')
+                img(src='{{post.featured_image}}')
                 h2 {{post.title}}
 
     aside.sidebar
-      h1 reviews
+      h1 interviews
+        each(loop='post of wordpress.interviews')
+          a(href='{{post._url}}'): div: p {{ post.title }}

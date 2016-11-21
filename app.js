@@ -16,7 +16,7 @@ module.exports = {
     html: '*(**/)*.sgr',
     css: '*(**/)*.sss'
   },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md'],
+  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.*', '*.log'],
   reshape: (ctx) => {
     return standard({
       webpack: ctx,
@@ -32,21 +32,35 @@ module.exports = {
   babel: { presets: [jsStandards] },
   plugins: [
     new Wordpress({
-      name: process.env.wordpress_url,
+      site: process.env.wordpress_url,
       addDataTo: locals,
-      postTypes: [{
-        category: 'interviews',
-        number: 10,
-        transform: (post) => {
-          post._url = `/posts/${post.slug}`
-          console.log(post._url)
-          return post
+      posts: [
+        {
+          name: 'interviews',
+          category: 'interviews',
+          number: 10,
+          transform: (post) => {
+            post._url = `/interviews/${post.slug}`
+            return post
+          },
+          template: {
+            path: './views/_interview.sgr',
+            output: (item) => `interviews/${item.slug}.html`
+          }
         },
-        template: {
-          path: './views/_interview.sgr',
-          output: (item) => `posts/${item.slug}.html`
+        {
+          name: 'recent_posts',
+          number: 10,
+          transform: (post) => {
+            post._url = `/posts/${post.slug}`
+            return post
+          },
+          template: {
+            path: './views/_post.sgr',
+            output: (item) => `posts/${item.slug}.html`
+          }
         }
-      }]
+      ]
     }),
     new HardSourcePlugin({
       environmentPaths: { root: __dirname },
