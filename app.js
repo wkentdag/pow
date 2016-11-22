@@ -1,13 +1,11 @@
 require('dotenv').config()
-const path = require('path')
-const HardSourcePlugin = require('hard-source-webpack-plugin')
-const standard = require('reshape-standard')
+const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
 const jsStandards = require('babel-preset-latest')
+const react = require('babel-preset-react')
 const Wordpress = require('spike-wordpress')
 const lost = require('lost')
 const fontMagician = require('postcss-font-magician')
-
 const locals = {}
 
 module.exports = {
@@ -16,11 +14,11 @@ module.exports = {
     html: '*(**/)*.sgr',
     css: '*(**/)*.sss'
   },
-  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.*', '*.log'],
+  ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', '*.lock', '*.log'],
   reshape: (ctx) => {
-    return standard({
+    return htmlStandards({
       webpack: ctx,
-      locals: locals
+      locals
     })
   },
   postcss: (ctx) => {
@@ -29,7 +27,7 @@ module.exports = {
     otherPlugins.forEach(plugin => css.plugins.push(plugin()))
     return css
   },
-  babel: { presets: [jsStandards] },
+  babel: { presets: [jsStandards, react] },
   plugins: [
     new Wordpress({
       site: process.env.wordpress_url,
@@ -39,33 +37,28 @@ module.exports = {
           name: 'interviews',
           category: 'interviews',
           number: 10,
-          transform: (post) => {
-            post._url = `/interviews/${post.slug}`
-            return post
-          },
           template: {
-            path: './views/_interview.sgr',
-            output: (item) => `interviews/${item.slug}.html`
+            path: './views/_post.sgr',
+            output: (item) => `/posts/${item.slug}.html`
+          },
+          transform: (post) => {
+            post._url = `/posts/${post.slug}`
+            return post
           }
         },
         {
           name: 'recent_posts',
           number: 10,
-          transform: (post) => {
-            post._url = `/posts/${post.slug}`
-            return post
-          },
           template: {
             path: './views/_post.sgr',
             output: (item) => `posts/${item.slug}.html`
+          },
+          transform: (post) => {
+            post._url = `/posts/${post.slug}`
+            return post
           }
         }
       ]
-    }),
-    new HardSourcePlugin({
-      environmentPaths: { root: __dirname },
-      recordsPath: path.join(__dirname, '_cache/records.json'),
-      cacheDirectory: path.join(__dirname, '_cache/hard_source_cache')
     })
   ]
 }

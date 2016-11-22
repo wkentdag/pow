@@ -8,16 +8,18 @@
   },
   "bugs": "https://github.com/wkentdag/pow/issues",
   "dependencies": {
-    "babel-preset-latest": "6.14.0",
+    "babel-preset-latest": "^6.14.0",
+    "babel-preset-react": "^6.16.0",
     "dotenv": "^2.0.0",
     "hard-source-webpack-plugin": "0.2.2",
-    "image-webpack-loader": "3.0.0",
-    "lost": "^7.0.4",
-    "postcss-font-magician": "^1.4.0",
+    "lost": "^7.1.1",
+    "postcss-font-magician": "^1.5.0",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
     "reshape-standard": "^0.4.2",
     "spike-css-standards": "^0.1.2",
     "spike-wordpress": "^0.2.3",
-    "webpack": "1.13.x"
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
     "ava": "^0.17.0",
@@ -34,7 +36,7 @@
   "scripts": {
     "compile": "spike compile",
     "clean": "spike clean",
-    "lint": "standard --verbose | snazzy",
+    "lint": "standard | snazzy",
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
     "start": "spike watch",

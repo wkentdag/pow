@@ -1,6 +1,5 @@
 doctype html
 html
-
   head
     block(name='meta')
       meta(charset='utf-8')
@@ -14,13 +13,11 @@ html
     block(name='stylesheets')
       link(rel='stylesheet' href='/css/index.css')
 
-  body
+  body(role='document')
     include(src='_header.sgr')
-    #content
-      main
-        block(name='content')
-
+    main#content(role='main')
+      block(name='content')
     include(src='_navbar.sgr')
 
     block(name='javascript')
-      script(src='/js/main.js')
+      script(src='/js/main.js' defer)

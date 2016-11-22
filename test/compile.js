@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../.env'})
+require('dotenv').config()
 const test = require('ava')
 const path = require('path')
 const rimraf = require('rimraf')
