@@ -36,7 +36,7 @@ module.exports = {
         {
           name: 'interviews',
           category: 'interviews',
-          number: 10,
+          number: 4,
           template: {
             path: './views/_post.sgr',
             output: (item) => `/posts/${item.slug}.html`
@@ -48,7 +48,7 @@ module.exports = {
         },
         {
           name: 'recent_posts',
-          number: 10,
+          number: 4,
           template: {
             path: './views/_post.sgr',
             output: (item) => `posts/${item.slug}.html`

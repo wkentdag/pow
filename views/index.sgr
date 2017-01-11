@@ -1,21 +1,24 @@
 extends(src='layout.sgr')
   block(name='content')
     section
-      #hero
-        a(href="{{ wordpress.recent_posts[0]._url }}")
-          h1 {{ wordpress.recent_posts[0].title }}
-          .hero-overlay
-          img(src="{{ wordpress.recent_posts[0].featured_image }}")
+      a(href="{{ wordpress.recent_posts[0]._url }}")
+        .hero
+          .text-container: h2 {{ wordpress.recent_posts[0].title }}
+          div(class="hero-overlay {{ wordpress.recent_posts[0].featured_image ? '' : 'hide' }}")
+          img(src="{{ wordpress.recent_posts[0].featured_image }}" class="{{ wordpress.recent_posts[0].featured_image ? '' : 'gradient' }}")
 
       .recent-stories
         each(loop="post, i of wordpress.recent_posts")
           if(condition="i > 0")
             .story
               a(href='{{ post._url }}')
-                img(src='{{post.featured_image}}')
-                h2 {{post.title}}
+                .story__inner
+                  .text-container
+                    h3 {{post.title}}
+                  div(class="hero-overlay {{ post.featured_image ? '' : 'hide' }}")
+                  img(src='{{post.featured_image}}' class="{{ post.featured_image ? '' : 'gradient' }}")
 
-    aside.sidebar
-      h1 interviews
-        each(loop='post of wordpress.interviews')
-          a(href='{{post._url}}'): div: p {{ post.title }}
+    // aside.sidebar
+    //   h3 interviews
+    //     each(loop='post of wordpress.interviews')
+    //       a(href='{{post._url}}'): div: p {{ post.title }}

@@ -1,6 +1,6 @@
+require('dotenv').config()
 const standard = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
-const pageId = require('spike-page-id')
 const {UglifyJsPlugin, DedupePlugin, OccurrenceOrderPlugin} = require('webpack').optimize
 const lost = require('lost')
 const fontMagician = require('postcss-font-magician')

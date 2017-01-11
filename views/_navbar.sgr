@@ -1,19 +1,22 @@
 nav
-  img(src='/img/logo.png' alt='logo')
+  a(href='/'): img.logo(src='/img/logo.svg' alt='logo')
   ul.nav
     li: a(href='/archive') Archive
     li: a(href='/interviews') Interviews
     li: a(href='/reviews') Reviews
     li: a(href='/mixes') Mixes
     li: a(href='/staff') Staff
+    li: a(href='/patreon') Support
 
-  h2 links
+  ul.nav
+    li: a(href='#') Album of the Month
+    li: a(href='#') Top Billin
+    li: a(href='#') Side Pieces
 
-  ul
+  ul.nav
+    li: a(href='#') Events
+    li: a(href='#') Podcast
     li: a(href='#') Twitter
     li: a(href='#') Facebook
     li: a(href='#') Soundcloud
     li: a(href='#') Youtube
-    li: a(href='#') Calendar
-    li: a(href='#') Podcast
-    li: a(href='#') Forum

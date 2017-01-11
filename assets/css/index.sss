@@ -1,1 +1,44 @@
 @import '_global.sss'
+@import 'navbar.sss'
+@import 'header.sss'
+
+.story
+  margin-top: var(--block)
+  margin-bottom: var(--block)
+  display: inline-block
+  lost-column: 1/2
+  max-height: 400px
+  overflow: hidden
+
+  @media (max-width: 420px)
+    lost-column: 1/1
+
+.story__inner
+  position: relative
+  width: 100%
+  height: 100%
+
+
+.hero
+  lost-column: 4/4
+  min-height: 400px
+  background-size: cover
+  position: relative
+  height: 400px
+  width: 100%
+  overflow: hidden
+
+.hero-overlay
+  position: absolute
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.5)
+  z-index: 95
+
+  &.hide
+    display: none
+
+.hero img
+  width: 100%
+  z-index: 90
+  position: absolute
