@@ -10,23 +10,23 @@
   "dependencies": {
     "babel-preset-latest": "^6.14.0",
     "babel-preset-react": "^6.16.0",
-    "dotenv": "^2.0.0",
-    "hard-source-webpack-plugin": "0.2.2",
-    "lost": "^7.1.1",
+    "dotenv": "^4.0.0",
+    "hard-source-webpack-plugin": "0.3.9",
+    "lost": "^8.0.0",
     "postcss-font-magician": "^1.5.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
-    "reshape-standard": "^0.4.2",
-    "spike-css-standards": "^0.1.2",
+    "reshape-standard": "^0.5.0",
+    "spike-css-standards": "^0.2.0",
     "spike-wordpress": "^0.2.3",
-    "webpack": "^1.13.1"
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
     "ava": "^0.17.0",
     "rimraf": "^2.5.4",
-    "snazzy": "^5.0.0",
-    "spike": "^0.12.2",
-    "spike-core": "^0.12.2",
+    "snazzy": "^6.0.0",
+    "spike": "^0.14.2",
+    "spike-core": "^0.13.3",
     "standard": "^8.0.0"
   },
   "homepage": "https://github.com/wkentdag/pow",
