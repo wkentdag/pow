@@ -19,7 +19,8 @@
     "reshape-standard": "^0.4.2",
     "spike-css-standards": "^0.1.2",
     "spike-wordpress": "^0.2.3",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "ava": "^0.17.0",
@@ -40,6 +41,9 @@
     "precommit": "npm run lint -s",
     "pretest": "npm run lint -s",
     "start": "spike watch",
-    "test": "NODE_ENV=test ava"
-  }
+    "test": "NODE_ENV=test ava",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
+  },
+  "snyk": true
 }
