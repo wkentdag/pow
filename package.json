@@ -17,7 +17,7 @@
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "reshape-standard": "^0.4.2",
-    "spike-css-standards": "^0.1.2",
+    "spike-css-standards": "^2.0.0",
     "spike-wordpress": "^0.2.3",
     "webpack": "^1.13.1"
   },
